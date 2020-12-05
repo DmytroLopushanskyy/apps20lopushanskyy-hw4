@@ -6,7 +6,7 @@ import ua.edu.ucu.iterator.StringIterator;
 
 
 public class RWayTrie implements Trie, IterableCollection {
-    public final static int R = 26;  // radix
+    public static final int R = 26;  // radix
     private static char[] alphabet = new char[] {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -23,7 +23,7 @@ public class RWayTrie implements Trie, IterableCollection {
         }
 
         public Node[] getNext() {
-            return next;
+            return next.clone();
         }
     }
 
@@ -97,7 +97,7 @@ public class RWayTrie implements Trie, IterableCollection {
         if (x.val != null) {
             return x;
         }
-        for (char c = 0; c < R; c++){
+        for (char c = 0; c < R; c++) {
             if (x.next[c] != null) {
                 return x;
             }

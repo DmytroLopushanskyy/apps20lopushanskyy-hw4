@@ -10,8 +10,8 @@ import java.util.NoSuchElementException;
 
 @IteratorAnnotation(iteratorCode = "get kth size")
 public class KthSizeIterator implements StringIterator {
-    private static final Integer maxWordLength = 45;
-    private static final Integer minWordLength = 3;
+    private static final Integer MAX_WORD_LENGTH = 45;
+    private static final Integer MIN_WORD_LENGTH = 3;
     private int currentIndex = 0;
     private RWayTrie collection;
 
@@ -52,7 +52,7 @@ public class KthSizeIterator implements StringIterator {
 
         int size = pre.length();
         if (size == 2) {
-            size = minWordLength;
+            size = MIN_WORD_LENGTH;
         }
 
         int sizesUsed = 0;
@@ -64,7 +64,7 @@ public class KthSizeIterator implements StringIterator {
                 sizesUsed++;
             }
             size++;
-        } while (sizesUsed != limit && size < maxWordLength);
+        } while (sizesUsed != limit && size < MAX_WORD_LENGTH);
         // All english words are less length than 45
 
 
