@@ -24,7 +24,7 @@ public class IteratorManager {
 
     private StringIterator findIterator(String code) {
         // Define reflections to find the needed iterator
-        Reflections ref = new Reflections("ua.edu.ucu.iterator_templates");
+        Reflections ref = new Reflections("ua.edu.ucu.iterator.templates");
         // Find all classes that are iterators in iterator directory
         Set<Class< ? >> iteratorCollection =
                 ref.getTypesAnnotatedWith(IteratorAnnotation.class);
