@@ -7,12 +7,24 @@ import ua.edu.ucu.iterator.StringIterator;
 
 public class RWayTrie implements Trie, IterableCollection {
     public final static int R = 26;  // radix
-    public Node root;          // root of trie
+    private static char[] alphabet = new char[] {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+            'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+            'w', 'x', 'y', 'z'};
+    private Node root;          // root of trie
     private IteratorManager iteratorManager;
 
     public static class Node {
-        public Object val;
-        public Node[] next = new Node[R];
+        private Object val;
+        private Node[] next = new Node[R];
+
+        public Object getVal() {
+            return val;
+        }
+
+        public Node[] getNext() {
+            return next;
+        }
     }
 
     public RWayTrie() {
@@ -31,16 +43,18 @@ public class RWayTrie implements Trie, IterableCollection {
 
     private Node put(Node x, String key, int val, int d) {
         // Change value associated with key if in subtrie rooted at x.
+        Node node = x;
         if (x == null) {
-            x = new Node();
+            node = new Node();
         }
         if (d == key.length()) {
-            x.val = val;
-            return x;
+            node.val = val;
+            return node;
         }
-        int c = charToPosition(key.charAt(d)); // Use dth key char to identify subtrie.
-        x.next[c] = put(x.next[c], key, val, d+1);
-        return x;
+        // Use dth key char to identify subtrie.
+        int c = charToPosition(key.charAt(d));
+        node.next[c] = put(node.next[c], key, val, d+1);
+        return node;
     }
 
     @Override
@@ -49,14 +63,17 @@ public class RWayTrie implements Trie, IterableCollection {
         return x != null;
     }
 
-    public Node get(Node x, String key, int d) { // Return value associated with key in the subtrie rooted at x.
+    public Node get(Node x, String key, int d) {
+        // Return value associated with key in the subtrie
+        // rooted at x.
         if (x == null) {
             return null;
         }
         if (d == key.length()) {
             return x;
         }
-        int c = charToPosition(key.charAt(d)); // Use dth key char to identify subtrie.
+        // Use dth key char to identify subtrie.
+        int c = charToPosition(key.charAt(d));
         return get(x.next[c], key, d+1);
     }
 
@@ -119,23 +136,18 @@ public class RWayTrie implements Trie, IterableCollection {
     }
 
     private static int charToPosition(Character c) {
-        int temp = (int) c;
-        int temp_integer = 96; //for lower case
-        if (temp <= 122 && temp >= 97) {
-            return temp - temp_integer - 1;
-        }
-        return -1;
+        return new String(alphabet).indexOf(c);
     }
 
     public static char positionToChar(int pos) {
-        char[] alphabet = new char[] {
-                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-                'w', 'x', 'y', 'z'};
         return alphabet[pos];
     }
 
     public StringIterator createIterator(String code) {
         return this.iteratorManager.getIterator();
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }

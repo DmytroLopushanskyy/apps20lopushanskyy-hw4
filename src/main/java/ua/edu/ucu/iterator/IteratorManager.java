@@ -26,7 +26,7 @@ public class IteratorManager {
         // Define reflections to find the needed iterator
         Reflections ref = new Reflections("ua.edu.ucu.iterator.templates");
         // Find all classes that are iterators in iterator directory
-        Set<Class< ? >> iteratorCollection =
+        Set<Class<?>> iteratorCollection =
                 ref.getTypesAnnotatedWith(IteratorAnnotation.class);
 
         if (iteratorCollection.size() == 0) {
@@ -38,7 +38,7 @@ public class IteratorManager {
         // Find the class with the needed id from iteratorCollection
         // and create its instance
         StringIterator iterator = null;
-        for (Class< ? > iteratorClass : iteratorCollection) {
+        for (Class<?> iteratorClass : iteratorCollection) {
             IteratorAnnotation presentAnnotation =
                     iteratorClass.getAnnotation(IteratorAnnotation.class);
 

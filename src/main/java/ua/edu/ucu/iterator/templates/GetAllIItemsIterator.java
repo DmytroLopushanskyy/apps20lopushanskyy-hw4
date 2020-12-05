@@ -21,11 +21,11 @@ public class GetAllIItemsIterator implements StringIterator {
         if (x == null) {
             return;
         }
-        if (x.val != null) {
+        if (x.getVal() != null) {
             q.enqueue(pre);
         }
         for (int c = 0; c < RWayTrie.R; c++) {
-            collect(x.next[c], pre + RWayTrie.positionToChar(c), q);
+            collect(x.getNext()[c], pre + RWayTrie.positionToChar(c), q);
         }
     }
 
@@ -37,7 +37,7 @@ public class GetAllIItemsIterator implements StringIterator {
         String param = (String) params[0];
 
         Queue q = new Queue(new String[0]);
-        collect(collection.get(collection.root, param, 0), param, q);
+        collect(collection.get(collection.getRoot(), param, 0), param, q);
 
         return () -> new Iterator<String>() {
             @Override
