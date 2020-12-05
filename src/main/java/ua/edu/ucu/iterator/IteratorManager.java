@@ -1,7 +1,6 @@
 package ua.edu.ucu.iterator;
 
 import org.reflections.Reflections;
-import ua.edu.ucu.queue.ImmutableLinkedList;
 import ua.edu.ucu.tries.RWayTrie;
 
 import java.util.Set;

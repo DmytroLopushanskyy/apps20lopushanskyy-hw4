@@ -1,6 +1,5 @@
 package ua.edu.ucu.autocomplete;
 
-import ua.edu.ucu.queue.Queue;
 import ua.edu.ucu.tries.Trie;
 import ua.edu.ucu.tries.Tuple;
 
@@ -10,10 +9,10 @@ import ua.edu.ucu.tries.Tuple;
  */
 public class PrefixMatches {
 
-    public Trie trie;
+    private Trie trie;
 
-    public PrefixMatches(Trie trie) {
-        this.trie = trie;
+    public PrefixMatches(Trie trieInput) {
+        this.trie = trieInput;
     }
 
     public int load(String... strings) {
