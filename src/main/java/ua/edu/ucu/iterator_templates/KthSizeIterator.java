@@ -53,7 +53,7 @@ public class KthSizeIterator implements StringIterator {
         int sizesUsed = 0;
         do {
             int collectedSize = collect(collection.get(collection.root, pre, 0), pre, q, size, pre.length());
-            System.out.println("size: " + size + ". count: " + collectedSize);
+            // System.out.println("size: " + size + ". count: " + collectedSize);
             if (collectedSize != 0) {
                 sizesUsed++;
             }
