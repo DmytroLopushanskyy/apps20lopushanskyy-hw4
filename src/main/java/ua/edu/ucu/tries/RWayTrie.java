@@ -6,7 +6,7 @@ import ua.edu.ucu.iterator.StringIterator;
 
 
 public class RWayTrie implements Trie, IterableCollection {
-    public static int R = 26;  // radix
+    public final static int R = 26;  // radix
     public Node root;          // root of trie
     private IteratorManager iteratorManager;
 
@@ -121,7 +121,7 @@ public class RWayTrie implements Trie, IterableCollection {
     private static int charToPosition(Character c) {
         int temp = (int) c;
         int temp_integer = 96; //for lower case
-        if (temp <= 122 & temp >= 97) {
+        if (temp <= 122 && temp >= 97) {
             return temp - temp_integer - 1;
         }
         return -1;

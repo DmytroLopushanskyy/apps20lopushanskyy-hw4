@@ -1,7 +1,7 @@
 package ua.edu.ucu.queue;
 
 public class Queue {
-    public ImmutableLinkedList queueList;
+    private ImmutableLinkedList queueList;
 
     public Queue(Object[] objects) {
         queueList = new ImmutableLinkedList(objects);
@@ -30,5 +30,9 @@ public class Queue {
 
     public int size() {
         return this.queueList.size();
+    }
+
+    public ImmutableLinkedList getQueueList() {
+        return this.queueList;
     }
 }

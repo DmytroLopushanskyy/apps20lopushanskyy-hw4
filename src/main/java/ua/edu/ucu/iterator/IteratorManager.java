@@ -3,6 +3,7 @@ package ua.edu.ucu.iterator;
 import org.reflections.Reflections;
 import ua.edu.ucu.tries.RWayTrie;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 public class IteratorManager {
@@ -45,7 +46,8 @@ public class IteratorManager {
                     iter = (StringIterator) iteratorClass
                             .getConstructor(RWayTrie.class)
                             .newInstance(this.collection);
-                } catch (Exception e) {
+                } catch (NoSuchMethodException | InstantiationException
+                        | IllegalAccessException | InvocationTargetException e) {
                     System.out.println("Wrong iterator constructor");
                     break;
                 }

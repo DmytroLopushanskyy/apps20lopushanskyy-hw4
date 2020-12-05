@@ -7,13 +7,13 @@ public class ImmutableLinkedList implements ImmutableList {
         private Node prevNode;
         private Node nextNode;
 
-        public Node(Object val) {
+        private Node(Object val) {
             value = val;
             prevNode = null;
             nextNode = null;
         }
 
-        public Node(Object val, Node prevVal, Node nextVal) {
+        private Node(Object val, Node prevVal, Node nextVal) {
             value = val;
             prevNode = prevVal;
             nextNode = nextVal;

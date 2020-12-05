@@ -6,6 +6,7 @@ import ua.edu.ucu.queue.Queue;
 import ua.edu.ucu.tries.RWayTrie;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 @iteratorAnnotation(iteratorCode = "get kth size")
 public class KthSizeIterator implements StringIterator {
@@ -65,12 +66,16 @@ public class KthSizeIterator implements StringIterator {
             @Override
             public boolean hasNext() {
                 return currentIndex < q.size() &&
-                        q.queueList.get(currentIndex) != null;
+                        q.getQueueList().get(currentIndex) != null;
             }
 
             @Override
             public String next() {
-                return (String) q.queueList.get(currentIndex++);
+                String nextEl = (String) q.getQueueList().get(currentIndex++);
+                if (nextEl == null) {
+                    throw new NoSuchElementException();
+                }
+                return nextEl;
             }
         };
     }
