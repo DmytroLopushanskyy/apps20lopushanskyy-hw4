@@ -5,11 +5,12 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import ua.edu.ucu.queue.Queue;
 import ua.edu.ucu.tries.RWayTrie;
 
 /**
  *
- * @author Andrii_Rodionov
+ * @author Andrii_Rodionov and Dmytro Lopushanskyy
  */
 public class PrefixMatchesITTest {
 
@@ -18,7 +19,7 @@ public class PrefixMatchesITTest {
     @Before
     public void init() {
         pm = new PrefixMatches(new RWayTrie());
-        pm.load("abc", "abce", "abcd", "abcde", "abcdef");
+        pm.load("abce", "abck", "abcd", "abcdef");
     }
 
     @Test
@@ -27,7 +28,7 @@ public class PrefixMatchesITTest {
 
         Iterable<String> result = pm.wordsWithPrefix(pref);
 
-        String[] expResult = {"abc", "abce", "abcd", "abcde", "abcdef"};
+        String[] expResult = {"abce", "abck", "abcd", "abcdef"};
 
         assertThat(result, containsInAnyOrder(expResult));
     }
@@ -39,7 +40,7 @@ public class PrefixMatchesITTest {
 
         Iterable<String> result = pm.wordsWithPrefix(pref, k);
 
-        String[] expResult = {"abc", "abce", "abcd", "abcde"};
+        String[] expResult = {"abce", "abcd", "abck", "abcdef"};
 
         assertThat(result, containsInAnyOrder(expResult));
     }
