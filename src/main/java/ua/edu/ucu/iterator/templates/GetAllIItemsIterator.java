@@ -1,14 +1,14 @@
-package ua.edu.ucu.iterator_templates;
+package ua.edu.ucu.iterator.templates;
 
 import ua.edu.ucu.iterator.StringIterator;
-import ua.edu.ucu.iterator.iteratorAnnotation;
+import ua.edu.ucu.iterator.IteratorAnnotation;
 import ua.edu.ucu.queue.Queue;
 import ua.edu.ucu.tries.RWayTrie;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@iteratorAnnotation(iteratorCode = "get all items")
+@IteratorAnnotation(iteratorCode = "get all items")
 public class GetAllIItemsIterator implements StringIterator {
     private int currentIndex = 0;
     private RWayTrie collection;
@@ -42,8 +42,8 @@ public class GetAllIItemsIterator implements StringIterator {
         return () -> new Iterator<String>() {
             @Override
             public boolean hasNext() {
-                return currentIndex < q.size() &&
-                        q.getQueueList().get(currentIndex) != null;
+                return currentIndex < q.size()
+                        && q.getQueueList().get(currentIndex) != null;
             }
 
             @Override

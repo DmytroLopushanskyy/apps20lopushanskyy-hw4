@@ -1,4 +1,4 @@
-package ua.edu.ucu.iterable_collection;
+package ua.edu.ucu.iterable;
 
 import ua.edu.ucu.iterator.StringIterator;
 

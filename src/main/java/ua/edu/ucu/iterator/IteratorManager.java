@@ -2,7 +2,6 @@ package ua.edu.ucu.iterator;
 
 import org.reflections.Reflections;
 import ua.edu.ucu.tries.RWayTrie;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
@@ -27,7 +26,8 @@ public class IteratorManager {
         // Define reflections to find the needed iterator
         Reflections ref = new Reflections("ua.edu.ucu.iterator_templates");
         // Find all classes that are iterators in iterator directory
-        Set<Class<?>> iteratorCollection = ref.getTypesAnnotatedWith(iteratorAnnotation.class);
+        Set<Class< ? >> iteratorCollection =
+                ref.getTypesAnnotatedWith(IteratorAnnotation.class);
 
         if (iteratorCollection.size() == 0) {
             // If there is no available iterator
@@ -37,17 +37,19 @@ public class IteratorManager {
 
         // Find the class with the needed id from iteratorCollection
         // and create its instance
-        StringIterator iter = null;
-        for (Class<?> iteratorClass : iteratorCollection) {
-            iteratorAnnotation presentAnnotation = iteratorClass.getAnnotation(iteratorAnnotation.class);
+        StringIterator iterator = null;
+        for (Class< ? > iteratorClass : iteratorCollection) {
+            IteratorAnnotation presentAnnotation =
+                    iteratorClass.getAnnotation(IteratorAnnotation.class);
 
             if (presentAnnotation.iteratorCode().equals(code)) {
                 try {
-                    iter = (StringIterator) iteratorClass
+                    iterator = (StringIterator) iteratorClass
                             .getConstructor(RWayTrie.class)
                             .newInstance(this.collection);
                 } catch (NoSuchMethodException | InstantiationException
-                        | IllegalAccessException | InvocationTargetException e) {
+                        | IllegalAccessException
+                        | InvocationTargetException e) {
                     System.out.println("Wrong iterator constructor");
                     break;
                 }
@@ -55,6 +57,6 @@ public class IteratorManager {
                 break;
             }
         }
-        return iter;
+        return iterator;
     }
 }

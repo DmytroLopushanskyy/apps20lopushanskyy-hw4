@@ -1,6 +1,6 @@
 package ua.edu.ucu.tries;
 
-import ua.edu.ucu.iterable_collection.IterableCollection;
+import ua.edu.ucu.iterable.IterableCollection;
 import ua.edu.ucu.iterator.IteratorManager;
 import ua.edu.ucu.iterator.StringIterator;
 

@@ -25,7 +25,7 @@ public class PrefixMatches {
                 strArray = new String[] {string};
             }
             for (String word: strArray) {
-                if (word.length() > 2){
+                if (word.length() > 2) {
                     System.out.println(word);
                     this.trie.add(new Tuple(word, word.length()));
                     counter++;
